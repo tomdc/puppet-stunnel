@@ -1,0 +1,6 @@
+puppet-stunnel
+
+Module that installs and preps the use of stunnel.
+Mainly built for Solaris, as the CSW package was missing some things to get it to work properly.
+So the idea is to check wether these can be added to the package itself.
+If $operatingsystem != 'Solaris', then it just installs stunnel.

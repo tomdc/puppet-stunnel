@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<service_bundle type='manifest' name='stunnel'>
+<service
+name='application/stunnel'
+type='service'
+version='1'>
+<create_default_instance enabled='false' />
+<single_instance />
+<dependency name='network' grouping='require_all' restart_on='error' type='service'><service_fmri value='svc:/milestone/network:default'/></dependency>
+<method_context><method_credential user="root" group="sys"/></method_context>
+<exec_method type="method" name="start" exec='/opt/csw/bin/stunnel' timeout_seconds="5"/>
+<exec_method type="method" name="stop" exec='pkill stunnel' timeout_seconds="5"/>
+<property_group name="startd" type="framework"><propval name="duration" type="astring" value="contract"/><propval name="ignore_error" type="astring" value="core,signal"/></property_group>
+<stability value="Unstable"/>
+<template><common_name><loctext xml:lang="C">Stunnel</loctext></common_name><documentation><doc_link name="stunnel.org" uri="http://stunnel.org"/></documentation></template></service></service_bundle>
