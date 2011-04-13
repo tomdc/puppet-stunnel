@@ -54,6 +54,6 @@ class stunnel::solaris {
   service { "svc:/application/stunnel:default":
     provider => "smf",
     ensure => running,
-    require => Exec["svccfg import /opt/csw/var/svc/manifest/stunnel.xml"],
+    require => [ File["/opt/csw/var/run"], Exec["svccfg import /opt/csw/var/svc/manifest/stunnel.xml"] ],
   }
 }
